@@ -1,0 +1,8 @@
+select product_id from customer c, entitlement e
+where e.customer_id=c.id and c.authToken='[B@793d377f' and e.product_id="com.boxes.flying.10.01.4001"
+
+
+select * from entitlement
+
+insert into entitlement
+values('one','com.boxes.flying.10.01.4001')

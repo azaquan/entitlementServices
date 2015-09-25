@@ -1,0 +1,54 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+  	<display-name>Archetype Created Web Application</display-name>
+  	<servlet>
+		<servlet-name>SignInWithCredentials</servlet-name>
+		<servlet-class>com.mirum.web.SignInWithCredentials</servlet-class>
+		<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+		<servlet-name>SignInWithCredentials</servlet-name>
+		<url-pattern>/SignInWithCredentials</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+		<servlet-name>RenewAuthToken</servlet-name>
+		<servlet-class>com.mirum.web.RenewAuthToken</servlet-class>
+		<load-on-startup>2</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+		<servlet-name>RenewAuthToken</servlet-name>
+		<url-pattern>/RenewAuthToken</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+		<servlet-name>Entitlements</servlet-name>
+		<servlet-class>com.mirum.web.Entitlements</servlet-class>
+		<load-on-startup>3</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+		<servlet-name>Entitlements</servlet-name>
+		<url-pattern>/Entitlements</url-pattern>
+  	</servlet-mapping>
+  	
+  	<servlet>
+		<servlet-name>VerifyEntitlement</servlet-name>
+		<servlet-class>com.mirum.web.VerifyEntitlement</servlet-class>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+  	<servlet-mapping>
+		<servlet-name>VerifyEntitlement</servlet-name>
+		<url-pattern>/VerifyEntitlement</url-pattern>
+  	</servlet-mapping>
+  	
+  <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/Mirum</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>
+</web-app>

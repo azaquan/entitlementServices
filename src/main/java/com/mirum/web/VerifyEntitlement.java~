@@ -1,0 +1,23 @@
+package com.mirum.web;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.*;
+
+public class VerifyEntitlement extends HttpServlet{
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		doPost(request, response);
+	}
+	
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+		String body = request.getReader().lines().reduce("", (accumulator, actual) -> accumulator + actual);
+      response.setContentType("text/xml");
+      PrintWriter out = response.getWriter();
+		out.println(body);
+	}
+}

@@ -1,0 +1,45 @@
+<%@ page import="com.jcabi.xml.XML,com.jcabi.xml.XMLDocument, java.io.*, javax.servlet.*" %>
+<html>
+<head>
+<title>Mirum Entitlement Services</title>
+</head>
+<body>
+<%
+	String referrer = request.getHeader("referer");
+	System.out.println("@@->"+referrer);
+	if(referrer==null){
+	}else{
+		String emailAddress="";
+		String password="";
+		emailAddress=request.getParameter("emailAddress");
+		password=request.getParameter("password");	
+		XML xml = new XMLDocument(
+		  "<credentials><emailAddress>"+emailAddress+"</emailAddress><password>"+password+"</password></credentials>"
+		);
+		response.setContentType("text/xml;charset=UTF-8");
+		PrintWriter outer = response.getWriter();
+		outer.println(xml.toString());
+		response.sendRedirect("SignInWithCredentials");
+		//RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("SignInWithCredentials");
+		//dispatcher.forward(request, response); 
+	}
+%>
+<form action="PreSignIn" method="POST">
+<h1>Mirum Entitlement Services Testing Page</h1>
+<h3>Sign In With Credentials</h3>
+emailAddress: <input type="text" name="emailAddress"  /><br>
+password: <input type="text" name="password"  /> <br>
+<input type="submit" value="Sign In"/><br>
+<h3>Generate a New Token</h3>
+authToken: <input type="text" name="authToken"  /><br>
+<input type="submit" value="Generate it" onclick="form.action='RenewAuthToken'"/><br>
+<h3>Get Products</h3>
+authToken: <input type="text" name="authToken"  /><br>
+<input type="submit" value="Submit" onclick="form.action='Entitlements'"/><br>
+<h3>Verify Entitlement</h3>
+authToken: <input type="text" name="authToken"  /><br>
+productId: <input type="text" name="productId"  /><br>
+<input type="submit" value="Verify" onclick="form.action='VerifyEntitlement'"/><br>
+</form>
+</body>
+</html>
